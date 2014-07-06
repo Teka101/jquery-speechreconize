@@ -1,0 +1,25 @@
+<html>
+<head>
+ <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+ <script type="text/javascript" src="jquery-speechreconize.js"></script>
+<body>
+ <script type="text/javascript">
+var WORDS =
+	{
+		'EAGGER_1': [ 'coucou' ],
+		'TO_LEAVE': [ 'partir', 'pars', 'reviens' ],
+		'DURATION_DAY': [ 'jour', 'jours', 'journée' ],
+		'DURATION_WEEK': [ 'semaine', 'semaines' ],
+		'NUMBERS': { '1': [ 'un', 'une' ], '2': [ 'deux' ], '3': [ 'trois ' ], '4': [ 'quatre' ] }
+	};
+var SENTENCES =
+	[
+		{ text: '^EAGGER_1$', action: function() { alert('Coucou les amis !'); } },
+		{ text: '^TO_LEAVE ([0-9]+) (DURATION_DAY|DURATION_WEEK)$', action: function(m) { alert('Bonne semaine !'); } }
+	];
+
+$(document).SpeechReconize(SENTENCES, WORDS, 'coucou');
+$(document).SpeechReconize(SENTENCES, WORDS, 'je pars une semaine');
+ </script>
+</body>
+</html>
